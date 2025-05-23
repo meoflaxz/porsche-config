@@ -1,8 +1,18 @@
 import React from 'react'
 import { useGLTF } from '@react-three/drei'
+import { useCustomization } from '../context/Customization';
+import { Color } from 'three';
+import { useEffect } from 'react';
 
 const Porsche = (props) => {
-  const { nodes, materials } = useGLTF('/models/scene.gltf')
+  const { nodes, materials } = useGLTF('/models/scene.gltf');
+  const { carColour } = useCustomization();
+
+  useEffect(() => {
+    if (materials["EXT_Carpaint.004"]) {
+      materials["EXT_Carpaint.004"].color = new Color(carColour.colour);
+    }
+  }, [carColour, materials]);
 
   return (
     <group {...props} dispose={null}>
@@ -12,10 +22,10 @@ const Porsche = (props) => {
       <mesh geometry={nodes.Object_10.geometry} material={materials['EXT_caliper_AT.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_12.geometry} material={materials['EXT_grid.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_14.geometry} material={materials['EXT_Rim.004']} rotation={[Math.PI / 2, 0, 0]} />
-      {/* <mesh geometry={nodes.Object_16.geometry} material={materials['EXT_Tyre.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh geometry={nodes.Object_16.geometry} material={materials['EXT_Tyre.004']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_18.geometry} material={materials['EXT_Rim.004']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_20.geometry} material={materials['EXT_Rim.004']} rotation={[Math.PI / 2, 0, 0]} />
-      {/* <mesh geometry={nodes.Object_22.geometry} material={materials['EXT_Tyre.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh geometry={nodes.Object_22.geometry} material={materials['EXT_Tyre.004']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_24.geometry} material={materials['EXT_Front_Light.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_26.geometry} material={materials['EXT_Flat_Light.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_28.geometry} material={materials['EXT_Flat_Light.001']} rotation={[Math.PI / 2, 0, 0]} />
@@ -167,6 +177,11 @@ const Porsche = (props) => {
       <mesh geometry={nodes.Object_320.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} />
       {/* front bumper */}
       {/* <mesh geometry={nodes.Object_322.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} />   */}
+      <mesh
+        geometry={nodes.Object_322.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_324.geometry} material={materials['EXT_Front_Light.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_326.geometry} material={materials['EXT_Flat_Light.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_328.geometry} material={materials['EXT_Mechanics_Flat.001']} rotation={[Math.PI / 2, 0, 0]} />
@@ -193,6 +208,11 @@ const Porsche = (props) => {
       <mesh geometry={nodes.Object_370.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} />
       {/* exterior */}
       {/* <mesh geometry={nodes.Object_372.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh
+        geometry={nodes.Object_372.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_374.geometry} material={materials['EXT_Front_Light_chrome.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_376.geometry} material={materials['EXT_Carpaint_Aluminium.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_378.geometry} material={materials['EXT_Mechanics_aluminium.001']} rotation={[Math.PI / 2, 0, 0]} />
@@ -207,16 +227,32 @@ const Porsche = (props) => {
       <mesh geometry={nodes.Object_394.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} />
       {/* bumper */}
       {/* <mesh geometry={nodes.Object_396.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh
+        geometry={nodes.Object_396.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_398.geometry} material={materials['DAMAGE_GLASS.004']} rotation={[Math.PI / 2, 0, 0]} />
       {/* hood */}
       {/* <mesh geometry={nodes.Object_400.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh
+        geometry={nodes.Object_400.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_402.geometry} material={materials['EXT_Mechanics_Flat.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_404.geometry} material={materials['EXT_Logos.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_406.geometry} material={materials['EXT_Rim.004']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_408.geometry} material={materials['EXT_Tyre.004']} rotation={[Math.PI / 2, 0, 0]} />
       {/* wing */}
-      {/* <mesh geometry={nodes.Object_410.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_412.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      {/* <mesh geometry={nodes.Object_410.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      
+      {/* <mesh geometry={nodes.Object_412.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh
+        geometry={nodes.Object_412.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_414.geometry} material={materials['EXT_Mechanics_Flat.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_416.geometry} material={materials['Brake_Caliper.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_418.geometry} material={materials['EXT_caliper_AT.001']} rotation={[Math.PI / 2, 0, 0]} />
@@ -229,6 +265,11 @@ const Porsche = (props) => {
       {/* door */}
       {/* <mesh geometry={nodes.Object_432.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} /> */}
       {/* <mesh geometry={nodes.Object_434.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh
+        geometry={nodes.Object_434.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_436.geometry} material={materials['EXT_Glass_Windows.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_438.geometry} material={materials['INT_Windows.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_440.geometry} material={materials['EXT_Glass_Windows_black.001']} rotation={[Math.PI / 2, 0, 0]} />
@@ -236,8 +277,13 @@ const Porsche = (props) => {
       <mesh geometry={nodes.Object_444.geometry} material={materials['EXT_Glass_light_EXT.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_446.geometry} material={materials['MIRROR.001']} rotation={[Math.PI / 2, 0, 0]} />
       {/* door */}
-      {/* <mesh geometry={nodes.Object_448.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} />
-      <mesh geometry={nodes.Object_450.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      {/* <mesh geometry={nodes.Object_448.geometry} material={materials['EXT_Carpaint_Plastic.001']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      {/* <mesh geometry={nodes.Object_450.geometry} material={materials['EXT_Carpaint.004']} rotation={[Math.PI / 2, 0, 0]} /> */}
+      <mesh
+        geometry={nodes.Object_450.geometry}
+        material={materials["EXT_Carpaint.004"]}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh geometry={nodes.Object_452.geometry} material={materials['EXT_Glass_Windows.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_454.geometry} material={materials['INT_Windows.001']} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_456.geometry} material={materials['INT_Skin_Grey.002']} rotation={[Math.PI / 2, 0, 0]} />

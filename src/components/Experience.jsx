@@ -12,7 +12,6 @@ const Experience = () => {
             // azimuth={[-1, 0.75]}
             >
             <Stage
-                environment="city"
                 intensity={1}
                 controls={false}
                 adjustCamera={false}>
